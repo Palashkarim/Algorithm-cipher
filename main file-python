@@ -1,0 +1,127 @@
+class Cipher:
+    """
+    The Cipher class handles the encryption and decryption of strings using a custom
+    cipher.
+
+    Attributes:
+        original_string (str): The original string that will be encrypted.
+        encrypted_string (str): The encrypted string after encryption.
+    """
+
+    def __init__(self, original_string: str, key: str = "KEYWORD") -> None:
+        """
+        Initializes the Cipher class with an original string and a key for encryption.
+
+        Parameters:
+            original_string (str): The original string to be encrypted.
+            key (str): The key used for encryption and decryption.
+        """
+        self.original_string = original_string
+        self.encrypted_string = ""
+        self.key = key.upper()  # Convert key to uppercase for consistency
+
+    def encrypt(self) -> str:
+        """
+        Encrypts the original string using a Vigenère-like cipher method.
+
+        Returns:
+            str: The encrypted string.
+        """
+        self.encrypted_string = ""  # Reset encrypted_string
+        key_index = 0
+
+        for char in self.original_string:
+            if char.isprintable():
+                shift = ord(self.key[key_index % len(self.key)]) % 128  # Mod to stay within ASCII range
+                encrypted_char = chr((ord(char) + shift) % 128)
+                self.encrypted_string += encrypted_char
+                key_index += 1
+            else:
+                self.encrypted_string += char  # Leave non-printable characters unchanged
+
+        return self.encrypted_string
+
+    def decrypt(self) -> str:
+        """
+        Decrypts the encrypted string using the same key.
+
+        Returns:
+            str: The decrypted string.
+        """
+        decrypted = ""
+        key_index = 0
+
+        for char in self.encrypted_string:
+            if char.isprintable():
+                shift = ord(self.key[key_index % len(self.key)]) % 128  # Mod to stay within ASCII range
+                decrypted_char = chr((ord(char) - shift) % 128)
+                decrypted += decrypted_char
+                key_index += 1
+            else:
+                decrypted += char  # Leave non-printable characters unchanged
+
+        return decrypted
+
+class Cipher:
+    """
+    The Cipher class handles the encryption and decryption of strings using a custom
+    cipher.
+
+    Attributes:
+        original_string (str): The original string that will be encrypted.
+        encrypted_string (str): The encrypted string after encryption.
+    """
+
+    def __init__(self, original_string: str, key: str = "KEYWORD") -> None:
+        """
+        Initializes the Cipher class with an original string and a key for encryption.
+
+        Parameters:
+            original_string (str): The original string to be encrypted.
+            key (str): The key used for encryption and decryption.
+        """
+        self.original_string = original_string
+        self.encrypted_string = ""
+        self.key = key.upper()  # Convert key to uppercase for consistency
+
+    def encrypt(self) -> str:
+        """
+        Encrypts the original string using a Vigenère-like cipher method.
+
+        Returns:
+            str: The encrypted string.
+        """
+        self.encrypted_string = ""  # Reset encrypted_string
+        key_index = 0
+
+        for char in self.original_string:
+            if char.isprintable():
+                shift = ord(self.key[key_index % len(self.key)]) % 128  # Mod to stay within ASCII range
+                encrypted_char = chr((ord(char) + shift) % 128)
+                self.encrypted_string += encrypted_char
+                key_index += 1
+            else:
+                self.encrypted_string += char  # Leave non-printable characters unchanged
+
+        return self.encrypted_string
+
+    def decrypt(self) -> str:
+        """
+        Decrypts the encrypted string using the same key.
+
+        Returns:
+            str: The decrypted string.
+        """
+        decrypted = ""
+        key_index = 0
+
+        for char in self.encrypted_string:
+            if char.isprintable():
+                shift = ord(self.key[key_index % len(self.key)]) % 128  # Mod to stay within ASCII range
+                decrypted_char = chr((ord(char) - shift) % 128)
+                decrypted += decrypted_char
+                key_index += 1
+            else:
+                decrypted += char  # Leave non-printable characters unchanged
+
+        return decrypted
